@@ -32,4 +32,23 @@ if (contactForm) {
     e.preventDefault();
     alert('Thank you for reaching out! (Form submission is disabled in this demo.)');
   });
+}
+
+// Hamburger menu toggle for mobile
+const navToggle = document.querySelector('.nav-toggle');
+const navLinksList = document.querySelector('.nav-links');
+if (navToggle && navLinksList) {
+  navToggle.addEventListener('click', function() {
+    const isOpen = navLinksList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  // Close menu when a nav link is clicked (mobile UX)
+  navLinksList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 600) {
+        navLinksList.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 } 

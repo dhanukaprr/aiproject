@@ -294,6 +294,29 @@ section {
   letter-spacing: 1px;
 }
 
+/* Hamburger menu styles */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  z-index: 200;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 4px 0;
+  background: var(--color-accent);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
   .product-cards, .testimonials, .how-steps {
@@ -311,11 +334,99 @@ section {
     flex-direction: column;
     height: auto;
     gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    background: #23201e;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    box-shadow: 0 4px 16px rgba(30,30,30,0.12);
+    padding: 1rem 0;
+    z-index: 150;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: max-height 0.3s;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-container {
+    position: relative;
+  }
+  .nav-links a {
+    padding: 0.7rem 0;
+    font-size: 1.1rem;
+    width: 100%;
+    display: block;
   }
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    gap: 0.7rem;
   }
   section {
-    padding: 2.5rem 0 1.2rem 0;
+    padding: 1.2rem 0 0.7rem 0;
+  }
+  .product-cards {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .product-card {
+    width: 100%;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    min-width: 0;
+  }
+  .product-card img {
+    height: 180px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .product-card h3 {
+    font-size: 1.1rem;
+  }
+  .product-card p {
+    font-size: 0.98rem;
+  }
+  .how-steps {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .how-step {
+    min-width: 0;
+    padding: 1rem 0.7rem;
+  }
+  .testimonial {
+    min-width: 0;
+    padding: 1rem 0.7rem;
+  }
+  .testimonials {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .contact-form {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  .footer {
+    font-size: 0.95rem;
+    padding: 0.8rem 0;
+  }
+  .nav-toggle {
+    display: flex;
   }
 } 
