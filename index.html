@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codexea - Premium Web Development Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Snake Game</title>
     <style>
         * {
             margin: 0;
@@ -13,622 +12,325 @@
         }
 
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            color: #ffffff;
-        }
-
-        /* Animated background particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        /* Top header bar */
-        .top-header {
-            background: #2c3e50;
-            color: #ffffff;
-            padding: 8px 0;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .top-header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 30px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icons a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #ff6b35;
-        }
-
-        /* Main navigation */
-        .main-nav {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            padding: 15px 0;
-            position: relative;
-            z-index: 9;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-decoration: none;
-            margin-bottom: 5px;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .nav-cta {
-            background: #2c3e50;
-            color: #ffffff;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            background: #34495e;
-            transform: translateY(-2px);
-        }
-
-        /* Glass morphism container */
-        .glass-container {
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .glass-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Header section */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .main-headline {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .main-description {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 40px;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background: #2c3e50;
-            border: none;
-            border-radius: 50px;
             color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            background: #34495e;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
-        }
-
-        /* Services grid */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-
-        .service-card {
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 30px;
+        .game-container {
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-icon {
+        h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .score, .high-score {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        #gameCanvas {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .game-over, .start-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        .start-screen {
             display: block;
         }
 
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .start-screen h2 {
+            color: #4ecdc4;
+            margin-bottom: 20px;
+            font-size: 2rem;
         }
 
-        .service-description {
-            font-size: 1rem;
-            opacity: 0.8;
-            line-height: 1.6;
+        .game-over h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 2rem;
         }
 
-        /* Features section */
-        .features {
-            margin: 60px 0;
-        }
-
-        .feature-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .feature-icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-
-        /* Contact section */
-        .contact {
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .restart-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             border-radius: 25px;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .restart-btn:hover {
             transform: scale(1.05);
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .glass-container {
-                margin: 10px;
-                padding: 20px;
-            }
-
-            .main-headline {
-                font-size: 2.5rem;
-            }
-
-            .main-description {
-                font-size: 1.1rem;
-            }
-
-            .nav-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .top-header-content {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-details {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .feature-list {
-                grid-template-columns: 1fr;
-            }
+        .instructions {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
-
-        /* Loading animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in:nth-child(1) { animation-delay: 0.1s; }
-        .fade-in:nth-child(2) { animation-delay: 0.2s; }
-        .fade-in:nth-child(3) { animation-delay: 0.3s; }
-        .fade-in:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <!-- Animated background particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Top Header Bar -->
-    <div class="top-header">
-        <div class="top-header-content">
-            <div class="contact-info">
-                <span>📞 +1 (555) 123-4567</span>
-                <span>📧 info@codexea.com</span>
-                <span>🕒 Mon-Fri 9AM-6PM</span>
-            </div>
-            <div class="social-icons">
-                <a href="#" target="_blank">📘</a>
-                <a href="#" target="_blank">💼</a>
-                <a href="#" target="_blank">🐦</a>
-                <a href="#" target="_blank">📷</a>
-                <a href="#" target="_blank">📌</a>
-            </div>
+    <div class="game-container">
+        <h1>🐍 Snake Game</h1>
+        
+        <div class="score-board">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="high-score">High Score: <span id="highScore">0</span></div>
         </div>
-    </div>
-
-    <!-- Main Navigation -->
-    <nav class="main-nav">
-        <div class="nav-content">
-            <div class="logo-section">
-                <a href="#" class="logo">codexea</a>
-                <p class="tagline">Tomorrow's Solutions, Today</p>
-            </div>
-            <div class="nav-menu">
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#services">Our Services</a>
-                <a href="#features">Our Features</a>
-                <a href="#contact" class="nav-cta">Get a Quote</a>
-            </div>
+        
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        
+        <div class="controls">
+            <p>Use arrow keys or WASD to control the snake</p>
+            <p>Press SPACE to pause/resume</p>
         </div>
-    </nav>
-
-    <div class="glass-container">
-        <!-- Header Section -->
-        <header class="header fade-in">
-            <h1 class="main-headline">Transforming Ideas Into Powerful Digital Experiences</h1>
-            <p class="main-description">We specialize in creating cutting-edge web solutions that drive business growth. From responsive design to performance optimization, our expert team delivers exceptional digital experiences that engage your audience and convert visitors into customers.</p>
-            <a href="#services" class="cta-button">Our Services</a>
-        </header>
-
-        <!-- Services Section -->
-        <section class="services">
-            <div class="service-card fade-in">
-                <span class="service-icon">🚀</span>
-                <h3 class="service-title">Modern Web Development</h3>
-                <p class="service-description">Cutting-edge websites built with the latest technologies and frameworks for optimal performance and user experience.</p>
-            </div>
-
-            <div class="service-card fade-in">
-                <span class="service-icon">📱</span>
-                <h3 class="service-title">Responsive Design</h3>
-                <p class="service-description">Mobile-first approach ensuring your website looks perfect on all devices, from smartphones to desktop computers.</p>
-            </div>
-
-            <div class="service-card fade-in">
-                <span class="service-icon">⚡</span>
-                <h3 class="service-title">Performance Optimization</h3>
-                <p class="service-description">Lightning-fast loading times and optimized code that keeps your users engaged and improves SEO rankings.</p>
-            </div>
-
-            <div class="service-card fade-in">
-                <span class="service-icon">🎨</span>
-                <h3 class="service-title">Custom UI/UX Design</h3>
-                <p class="service-description">Beautiful, intuitive interfaces designed to convert visitors into customers with exceptional user experiences.</p>
-            </div>
-
-            <div class="service-card fade-in">
-                <span class="service-icon">🔧</span>
-                <h3 class="service-title">Maintenance & Support</h3>
-                <p class="service-description">Ongoing support and maintenance to keep your website secure, updated, and running smoothly.</p>
-            </div>
-
-            <div class="service-card fade-in">
-                <span class="service-icon">📈</span>
-                <h3 class="service-title">SEO & Analytics</h3>
-                <p class="service-description">Search engine optimization and analytics integration to help your business grow and track success.</p>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features fade-in">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 600;">Why Choose Codexea?</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <span class="feature-icon">✨</span>
-                    <span>Premium Quality Code</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🛡️</span>
-                    <span>Secure & Reliable</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <span>Fast Delivery</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">💬</span>
-                    <span>24/7 Support</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🎯</span>
-                    <span>Client-Focused</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🚀</span>
-                    <span>Future-Ready</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact fade-in">
-            <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 20px;">Ready to Get Started?</h2>
-            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px;">Transform your digital presence with Codexea's expert web development services.</p>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <span>🌐</span>
-                    <a href="https://www.codexea.com" target="_blank" style="color: white; text-decoration: none;">www.codexea.com</a>
-                </div>
-                <div class="contact-item">
-                    <span>📧</span>
-                    <span>info@codexea.com</span>
-                </div>
-                <div class="contact-item">
-                    <span>💼</span>
-                    <span>Professional Services</span>
-                </div>
-            </div>
-        </section>
+        
+        <div class="game-over" id="gameOver">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+        
+        <div class="start-screen" id="startScreen">
+            <h2>Ready to Play?</h2>
+            <p>Press any arrow key or WASD to start!</p>
+        </div>
     </div>
 
     <script>
-        // Create animated particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        // Game variables
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const highScoreElement = document.getElementById('highScore');
+        const gameOverElement = document.getElementById('gameOver');
+        const finalScoreElement = document.getElementById('finalScore');
+        const startScreenElement = document.getElementById('startScreen');
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Random size between 2px and 6px
-                const size = Math.random() * 4 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                // Random position
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                
-                // Random animation delay
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                
-                particlesContainer.appendChild(particle);
+        // Game settings
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+
+        let snake = [
+            {x: 10, y: 10}
+        ];
+        let food = {};
+        let dx = 0;
+        let dy = 0;
+        let score = 0;
+        let highScore = localStorage.getItem('snakeHighScore') || 0;
+        let gameRunning = false; // Start as false, will be true when first key is pressed
+        let gamePaused = false;
+        let gameStarted = false; // Track if game has been started
+
+        // Initialize high score display
+        highScoreElement.textContent = highScore;
+
+        // Generate random food position
+        function generateFood() {
+            food = {
+                x: Math.floor(Math.random() * tileCount),
+                y: Math.floor(Math.random() * tileCount)
+            };
+            
+            // Make sure food doesn't spawn on snake
+            for (let segment of snake) {
+                if (segment.x === food.x && segment.y === food.y) {
+                    generateFood();
+                    return;
+                }
             }
         }
 
-        // Smooth scroll effect for glass containers
-        function addScrollEffects() {
-            const glassContainers = document.querySelectorAll('.glass-container');
-            
-            window.addEventListener('scroll', () => {
-                glassContainers.forEach(container => {
-                    const rect = container.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible) {
-                        container.style.transform = `translateY(${rect.top * 0.1}px)`;
-                    }
-                });
-            });
+        // Draw game elements
+        function drawGame() {
+            // Clear canvas
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw snake
+            ctx.fillStyle = '#4ecdc4';
+            for (let segment of snake) {
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+            }
+
+            // Draw snake head with different color
+            ctx.fillStyle = '#45b7aa';
+            ctx.fillRect(snake[0].x * gridSize, snake[0].y * gridSize, gridSize - 2, gridSize - 2);
+
+            // Draw food
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
         }
 
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            addScrollEffects();
+        // Move snake
+        function moveSnake() {
+            if (!gameRunning || gamePaused) return;
+
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+
+            // Check wall collision
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                gameOver();
+                return;
+            }
+
+            // Check self collision
+            for (let segment of snake) {
+                if (head.x === segment.x && head.y === segment.y) {
+                    gameOver();
+                    return;
+                }
+            }
+
+            snake.unshift(head);
+
+            // Check food collision
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                scoreElement.textContent = score;
+                generateFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        // Game over function
+        function gameOver() {
+            gameRunning = false;
+            finalScoreElement.textContent = score;
             
-            // Add fade-in animation to elements as they come into view
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // Update high score
+            if (score > highScore) {
+                highScore = score;
+                highScoreElement.textContent = highScore;
+                localStorage.setItem('snakeHighScore', highScore);
+            }
+            
+            gameOverElement.style.display = 'block';
+        }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+        // Restart game
+        function restartGame() {
+            snake = [{x: 10, y: 10}];
+            dx = 0;
+            dy = 0;
+            score = 0;
+            scoreElement.textContent = score;
+            gameRunning = false; // Start as false, will be true when first key is pressed
+            gamePaused = false;
+            gameStarted = false;
+            gameOverElement.style.display = 'none';
+            startScreenElement.style.display = 'block';
+            generateFood();
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            // Start the game on first key press
+            if (!gameStarted && (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'w' || e.key === 'W' || e.key === 's' || e.key === 'S' || e.key === 'a' || e.key === 'A' || e.key === 'd' || e.key === 'D')) {
+                gameRunning = true;
+                gameStarted = true;
+                startScreenElement.style.display = 'none';
+            }
+
+            if (!gameRunning) return;
+
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'w':
+                case 'W':
+                    if (dy !== 1) {
+                        dx = 0;
+                        dy = -1;
                     }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
+                    break;
+                case 'ArrowDown':
+                case 's':
+                case 'S':
+                    if (dy !== -1) {
+                        dx = 0;
+                        dy = 1;
+                    }
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    if (dx !== 1) {
+                        dx = -1;
+                        dy = 0;
+                    }
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    if (dx !== -1) {
+                        dx = 1;
+                        dy = 0;
+                    }
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    if (gameStarted) {
+                        gamePaused = !gamePaused;
+                    }
+                    break;
+            }
         });
 
-        // Add mouse parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const particles = document.querySelectorAll('.particle');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+        // Game loop
+        function gameLoop() {
+            moveSnake();
+            drawGame();
+        }
 
-            particles.forEach((particle, index) => {
-                const speed = (index + 1) * 0.5;
-                const xPos = (x - 0.5) * speed;
-                const yPos = (y - 0.5) * speed;
-                
-                particle.style.transform = `translate(${xPos}px, ${yPos}px)`;
-            });
-        });
+        // Initialize game
+        generateFood();
+        setInterval(gameLoop, 150);
     </script>
 </body>
 </html>
